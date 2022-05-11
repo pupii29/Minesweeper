@@ -19,6 +19,8 @@ public class Board extends JPanel {
     private int boardWidth;
     private int boardHeight;
 
+    private boolean inGame;
+
     private static JLabel statusbar;
     private Map<String, Image> images;
 
@@ -38,21 +40,23 @@ public class Board extends JPanel {
         images = new HashMap<>();
 
         for (int i = 1; i < 9; i++) {
-            String path = "resources/" + i + ".png";
-            images.put(Integer.toString(i), (new ImageIcon(path)).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+            String path = "../resources/" + i + ".png";
+            images.put(Integer.toString(i), (new ImageIcon(path)).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
         }
 
-        images.put("Bomb", (new ImageIcon("resources/Bomb.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        images.put("Covered", (new ImageIcon("resources/Covered.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        images.put("Empty", (new ImageIcon("resources/Empty.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        images.put("Marked", (new ImageIcon("resources/Marked.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        images.put("Wrongmarked", (new ImageIcon("resources/Wrongmarked.png")).getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+        images.put("Bomb", (new ImageIcon("../resources/Bomb.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
+        images.put("Covered", (new ImageIcon("../resources/Covered.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
+        images.put("Empty", (new ImageIcon("../resources/Empty.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
+        images.put("Marked", (new ImageIcon("../resources/Marked.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
+        images.put("Wrongmarked", (new ImageIcon("../resources/Wrongmarked.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
 
         // addMouseListener(new MinesAdapter());
         newGame();
     }
 
     private void newGame() {
+        inGame = true;
 
+        
     }
 }
