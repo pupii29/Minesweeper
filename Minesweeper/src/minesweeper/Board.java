@@ -56,7 +56,5 @@ public class Board extends JPanel {
 
     private void newGame() {
         inGame = true;
-
-        
     }
 }
