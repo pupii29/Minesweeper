@@ -37,6 +37,12 @@ public class Board extends JPanel {
 
     public void initBoard() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
+        setImage();
+        // addMouseListener(new MinesAdapter());
+        newGame();
+    }
+
+    private void setImage() {
         images = new HashMap<>();
 
         for (int i = 1; i < 9; i++) {
@@ -49,12 +55,19 @@ public class Board extends JPanel {
         images.put("Empty", (new ImageIcon("../resources/Empty.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
         images.put("Marked", (new ImageIcon("../resources/Marked.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
         images.put("Wrongmarked", (new ImageIcon("../resources/Wrongmarked.png")).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
-
-        // addMouseListener(new MinesAdapter());
-        newGame();
     }
 
     private void newGame() {
         inGame = true;
+        initField();
+        setLocationBomb();
+    }
+
+    private void initField() {
+
+    }
+
+    private void setLocationBomb() {
+
     }
 }
