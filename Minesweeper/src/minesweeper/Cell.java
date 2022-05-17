@@ -5,6 +5,8 @@ public class Cell {
     protected CellType cellType = CellType.EMPTY;
     protected boolean isMarked = false;
 
+    public Cell() {}
+
     public Cell(String isCovered, String isMarked) {
         if (isCovered.equals("true")) {
             this.isCovered = true;
