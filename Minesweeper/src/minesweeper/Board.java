@@ -136,4 +136,50 @@ public class Board extends JPanel {
             }
         }
     }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        int uncover = 0;
+        
+        for (int row = 0; row < nRows; row++) {
+            for (int col = 0; col < nCols; col++) {
+                Cell cell = field[row][col];
+                String imageName = cell.getImageName();
+                
+                if (inGame && cell.getCellType() == CellType.BOMB && !cell.isCoveredCell()) {
+                    inGame = false;
+                }
+                
+                if (!inGame) {  
+                    if (cell.getCellType() == CellType.BOMB && !cell.isMarkedCell()) {
+                        cell.flipUp();
+                        imageName = ImageName.BOMB.toString(); 
+                    } else if (cell.isCoveredCell() && cell.getCellType() == CellType.BOMB && cell.isMarkedCell()) {
+                        imageName = ImageName.MARKED.toString(); 
+                    } else if (cell.isCoveredCell() && cell.getCellType() != CellType.BOMB && cell.isMarkedCell()) {
+                        imageName = ImageName.WRONGMARKED.toString(); 
+                    } else if (cell.isCoveredCell()) { 
+                        imageName = ImageName.COVERED.toString();
+                    }
+
+                } else { 
+                    if (cell.isMarkedCell()) { 
+                        imageName = ImageName.MARKED.toString();
+                    } else if (cell.isCoveredCell()) { 
+                        imageName = ImageName.COVERED.toString();
+                       uncover++;
+                    }
+                }
+                g.drawImage(images.get(imageName), (col * CELL_SIZE), (row * CELL_SIZE), this);
+            }
+        }
+        if (uncover == 0 && inGame) {
+
+            inGame = false;
+            statusbar.setText("You won!");
+
+        } else if (!inGame) {
+            statusbar.setText("Game Over!");
+        }
+    }    
 }
