@@ -7,21 +7,6 @@ public class Cell {
 
     public Cell() {}
 
-    public Cell(String isCovered, String isMarked) {
-        if (isCovered.equals("true")) {
-            this.isCovered = true;
-        } else {
-            this.isCovered = false;
-        }
-
-        if (isMarked.equals("true")) {
-            this.isMarked = true;
-        } else {
-            this.isMarked = false;
-        }
-
-    }
-
     public void cellCount() {}
 
     public void flipUp() {
@@ -47,7 +32,6 @@ public class Cell {
     public void changeWhetherMarked() {
         this.isMarked = !isMarked;
     }
-
 }
 
 

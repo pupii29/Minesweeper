@@ -6,12 +6,6 @@ public class EmptyCell extends Cell {
         this.cellType = CellType.EMPTY;
     }
 
-    public EmptyCell(String isCovered, String isMarked) {
-        super(isCovered, isMarked);
-        this.cellType = CellType.EMPTY;
-    }
-
-
     @Override
     public CellType getCellType() {
         return this.cellType;
