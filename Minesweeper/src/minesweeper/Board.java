@@ -172,10 +172,8 @@ public class Board extends JPanel {
             }
         }
         if (uncover == 0 && inGame) {
-
             inGame = false;
             statusbar.setText("You won!");
-
         } else if (!inGame) {
             statusbar.setText("Game Over!");
         }
@@ -186,10 +184,8 @@ public class Board extends JPanel {
      * @author Ngoc Long
      */
     private class MinesAdapter extends MouseAdapter {
-
         @Override
         public void mousePressed(MouseEvent e) {
-
             int x = e.getX();
             int y = e.getY();
 
@@ -199,22 +195,17 @@ public class Board extends JPanel {
             boolean doRepaint = false;
 
             if (!inGame) {
-
                 newGame();
                 repaint();
             }
 
             if ((x < nCols * cellSize) && (y < nRows * cellSize)) {
             	Cell cell = field[cRow][cCol];
-            	
+            
                 if (e.getButton() == MouseEvent.BUTTON3) {
-
                     if (cell.isCoveredCell()) {
-
                         doRepaint = true;
-                        
                         if (!cell.isCoveredCell() || cell.getCellType() == CellType.BOMB || !cell.isMarkedCell()) {
-
                             if (minesLeft > 0) {
                                 cell.isMarked = true;
                                 minesLeft--;
@@ -224,31 +215,24 @@ public class Board extends JPanel {
                                 statusbar.setText("No marks left");
                             }
                         } else {
-
                         	cell.isMarked = false;
                             minesLeft++;
                             String msg = Integer.toString(minesLeft);
                             statusbar.setText(msg);
                         }
                     }
-
                 } else {
-
                     if (cell.isCoveredCell() && cell.getCellType() != CellType.BOMB && cell.isMarkedCell()) {
-
                         return;
                     }
 
-                    if (cell.isCoveredCell()
-                            && !cell.isMarkedCell()) {
-
+                    if (cell.isCoveredCell() && !cell.isMarkedCell()) {
                         cell.isCovered = false;
                         doRepaint = true;
-
+                        
                         if (cell.getCellType() == CellType.BOMB) {
                             inGame = false;
                         }
-
                         if (cell.getCellType() == CellType.EMPTY) {
                             find_empty_cells(cRow,cCol);
                         }
