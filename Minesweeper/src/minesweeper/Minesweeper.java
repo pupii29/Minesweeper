@@ -1,16 +1,21 @@
 package minesweeper;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Minesweeper extends JFrame {
-    private JLabel status;
+    private JLabel statusbar;
 
     public Minesweeper() {
-    	status = new JLabel("");
-        add(status, BorderLayout.SOUTH);
-        add(new Board(status));
+        initUI();
+    }
+
+    private void initUI() {
+        statusbar = new JLabel("");
+        add(statusbar, BorderLayout.SOUTH);
+        add(new Board(statusbar));
         setResizable(false);
         pack();
         setTitle("Minesweeper");
@@ -19,7 +24,9 @@ public class Minesweeper extends JFrame {
     }
 
     public static void main(String[] args) {
-     	Minesweeper ms = new Minesweeper();
-    	ms.setVisible(true);
+        EventQueue.invokeLater(() -> {
+            var ex = new Minesweeper();
+            ex.setVisible(true);
+        });
     }
 }
