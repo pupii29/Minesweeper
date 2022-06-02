@@ -172,10 +172,8 @@ public class Board extends JPanel {
             }
         }
         if (uncover == 0 && inGame) {
-
             inGame = false;
             statusbar.setText("You won!");
-
         } else if (!inGame) {
             statusbar.setText("Game Over!");
         }
@@ -193,8 +191,8 @@ public class Board extends JPanel {
             int x = e.getX();
             int y = e.getY();
 
-            int cCol = x / CELL_SIZE;
-            int cRow = y / CELL_SIZE;
+            int cCol = x / cellSize;
+            int cRow = y / cellSize;
 
             boolean doRepaint = false;
 
@@ -204,7 +202,7 @@ public class Board extends JPanel {
                 repaint();
             }
 
-            if ((x < nCols * CELL_SIZE) && (y < nRows * CELL_SIZE)) {
+            if ((x < nCols * cellSize) && (y < nRows * cellSize)) {
             	Cell cell = field[cRow][cCol];
             	
                 if (e.getButton() == MouseEvent.BUTTON3) {

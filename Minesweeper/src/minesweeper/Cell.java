@@ -33,5 +33,3 @@ public class Cell {
         this.isMarked = !isMarked;
     }
 }
-
-
