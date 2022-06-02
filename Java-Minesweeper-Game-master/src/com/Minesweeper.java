@@ -1,4 +1,4 @@
-package minesweeper;
+package com;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -25,6 +25,7 @@ public class Minesweeper extends JFrame {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
+
             var ex = new Minesweeper();
             ex.setVisible(true);
         });

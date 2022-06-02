@@ -1,4 +1,4 @@
-package minesweeper;
+package com;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Board extends JPanel {
-
     private final int NUM_IMAGES = 13;
     private final int CELL_SIZE = 15;
 
@@ -43,54 +42,43 @@ public class Board extends JPanel {
     private final JLabel statusbar;
 
     public Board(JLabel statusbar) {
-
         this.statusbar = statusbar;
         initBoard();
     }
 
     private void initBoard() {
-
         setPreferredSize(new Dimension(BOARD_WIDTH, BOARD_HEIGHT));
 
         img = new Image[NUM_IMAGES];
-
         for (int i = 0; i < NUM_IMAGES; i++) {
-
-            var path = "../resources/" + i + ".png";
+            var path = "src/resources/" + i + ".png";
             img[i] = (new ImageIcon(path)).getImage();
         }
-
         addMouseListener(new MinesAdapter());
         newGame();
     }
 
     private void newGame() {
-
         int cell;
 
         var random = new Random();
         inGame = true;
         minesLeft = N_MINES;
-
         allCells = N_ROWS * N_COLS;
         field = new int[allCells];
 
         for (int i = 0; i < allCells; i++) {
-
             field[i] = COVER_FOR_CELL;
         }
 
         statusbar.setText(Integer.toString(minesLeft));
 
         int i = 0;
-
         while (i < N_MINES) {
-
             int position = (int) (allCells * random.nextDouble());
 
             if ((position < allCells)
                     && (field[position] != COVERED_MINE_CELL)) {
-
                 int current_col = position % N_COLS;
                 field[position] = COVERED_MINE_CELL;
                 i++;
