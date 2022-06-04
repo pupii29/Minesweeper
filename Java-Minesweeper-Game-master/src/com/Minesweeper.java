@@ -28,6 +28,6 @@ public class Minesweeper extends JFrame {
             var ex = new Minesweeper();
             ex.setVisible(true);
         });
-        PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//Minesweeper//Minesweeper//src//sound//theme.wav");
+        PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//sound//theme.wav");
     }
 }
