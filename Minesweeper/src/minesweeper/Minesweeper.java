@@ -3,14 +3,19 @@ package minesweeper;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.EventQueue;
 
 public class Minesweeper extends JFrame {
-    private JLabel status;
+    private JLabel statusbar;
 
     public Minesweeper() {
-    	status = new JLabel("");
-        add(status, BorderLayout.SOUTH);
-        add(new Board(status));
+        initUI();
+    }
+
+    public void initUI() {
+    	statusbar = new JLabel("");
+        add(statusbar, BorderLayout.SOUTH);
+        add(new Board(statusbar));
         setResizable(false);
         pack();
         setTitle("Minesweeper");
@@ -19,7 +24,10 @@ public class Minesweeper extends JFrame {
     }
 
     public static void main(String[] args) {
-     	Minesweeper ms = new Minesweeper();
-    	ms.setVisible(true);
+        EventQueue.invokeLater(() -> {
+            var ex = new Minesweeper();
+            ex.setVisible(true);
+        });
+        PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//Minesweeper//Minesweeper//src//sound//theme.wav");
     }
 }
