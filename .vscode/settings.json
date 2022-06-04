@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "Minesweeper/src",
+        "Java-Minesweeper-Game-master/src/minesweeper",
+        "Java-Minesweeper-Game-master/src/com"
+    ]
+}
