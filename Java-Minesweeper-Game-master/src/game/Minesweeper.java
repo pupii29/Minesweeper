@@ -1,4 +1,4 @@
-package com;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -25,7 +25,7 @@ public class Minesweeper extends JFrame {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-
+            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//sound//theme.wav");
             var ex = new Minesweeper();
             ex.setVisible(true);
         });

@@ -1,4 +1,3 @@
-package com;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -26,7 +25,7 @@ public class Board extends JPanel {
     private final int DRAW_MARK = 11;
     private final int DRAW_WRONG_MARK = 12;
 
-    private final int N_MINES = 40;
+    private final int N_MINES = 1;
     private final int N_ROWS = 16;
     private final int N_COLS = 16;
 
@@ -51,7 +50,7 @@ public class Board extends JPanel {
 
         img = new Image[NUM_IMAGES];
         for (int i = 0; i < NUM_IMAGES; i++) {
-            var path = "src/resources/" + i + ".png";
+            var path = "C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//resources//" + i + ".png";
             img[i] = (new ImageIcon(path)).getImage();
         }
         addMouseListener(new MinesAdapter());
@@ -280,10 +279,11 @@ public class Board extends JPanel {
         if (uncover == 0 && inGame) {
 
             inGame = false;
-            statusbar.setText("Game won");
-
+            statusbar.setText("You win!!!");
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//sound//victory.wav");
         } else if (!inGame) {
-            statusbar.setText("Game lost");
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//sound//gameover.wav");
+            statusbar.setText("Game over!");
         }
     }
 
@@ -322,6 +322,7 @@ public class Board extends JPanel {
                                 String msg = Integer.toString(minesLeft);
                                 statusbar.setText(msg);
                             } else {
+                                PlayMusic.playSound("C://Users//DELL//Documents//GitHub//Minesweeper//Java-Minesweeper-Game-master//src//sound//errorr.wav");
                                 statusbar.setText("No marks left");
                             }
                         } else {
